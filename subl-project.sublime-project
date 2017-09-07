@@ -1,0 +1,19 @@
+{
+	"folders":
+	[
+		{
+			"path": ".",
+      "file_exclude_patterns": 
+      ["*.lock", "package-lock.json", "artisan", "server.php"],
+      "folder_exclude_patterns":
+      [
+        "public",
+        "dist",
+        "storage",
+        "vendor",
+        "node_modules",
+        "bootstrap"
+      ]
+		}
+	]
+}

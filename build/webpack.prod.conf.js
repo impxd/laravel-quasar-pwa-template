@@ -41,7 +41,7 @@ module.exports = merge(baseWebpackConfig, {
       filename: '[name].[contenthash].css'
     }),
     new HtmlWebpackPlugin({
-      filename: path.resolve(__dirname, '../dist/index.html'),
+      filename: path.resolve(__dirname, '../dist/app.html'),
       template: 'src/index.html',
       inject: true,
       minify: {
@@ -85,6 +85,11 @@ module.exports = merge(baseWebpackConfig, {
         from: path.resolve(__dirname, '../src/statics'),
         to: 'statics',
         ignore: ['.*']
+      },
+      // laravel files in public/
+      {
+        from: path.resolve(__dirname, '../src/larafiles'),
+        to: ''
       }
     ]),
     // service worker caching

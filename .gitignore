@@ -14,7 +14,9 @@ composer.lock
 
 .DS_Store
 .thumbs.db
-dist/
+/dist/*
 cordova/platforms
 cordova/plugins
 package-lock.json
+
+subl-project.sublime-workspace

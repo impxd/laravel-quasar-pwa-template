@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h5>Welcome to your Quasar PWA</h5>
+    <h5>Laravel 5.5 (as API) + Quasar PWA</h5>
     <ul>
       <li><a href="http://quasar-framework.org" target="_blank" rel="noopener">Docs</a></li>
       <li><a href="http://forum.quasar-framework.org" target="_blank" rel="noopener">Forum</a></li>
