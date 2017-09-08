@@ -58,17 +58,22 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Build Setup
 
+> rename .env.example to .env
+
 ``` bash
-# install dependencies
+# install php dependencies
+$ composer install
+
+# install node dependencies
 $ npm install
 
-# serve with hot reload at localhost:8081
-$ quasar dev
+# generate key
+$ ./artisan key:generate
 
 # build for production with minification
-$ quasar build
+$ npm run build
 
-# lint code
-$ quasar lint
+# test
+$ ./artisan serve
 ```
 
