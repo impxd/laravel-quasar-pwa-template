@@ -1,2 +1,1 @@
-
-{{ include_once('app.html') }}
+{{ require_once('app.html') }}

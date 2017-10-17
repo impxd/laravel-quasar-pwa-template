@@ -7,12 +7,57 @@
       <li><a href="https://gitter.im/quasarframework/Lobby" target="_blank" rel="noopener">Gitter Chat</a></li>
       <li><a href="https://twitter.com/quasarframework" target="_blank" rel="noopener">Twitter</a></li>
     </ul>
+    <br>
+    <div>
+      <p>Make an api request to Laravel <i>/api/test</i><br>
+        <sub>Before you need to run <i>artisan serve</i></sub>
+      </p>
+      <q-btn loader :color="color" @click="makeRequest">
+        make an api request
+      </q-btn>
+      <br><br>
+      <code>
+        {{response}}
+      </code>
+    </div>
   </div>
 </template>
 
 <script>
+import {QBtn} from 'quasar'
+
 export default {
-  name: 'hello'
+  name: 'hello',
+  data () {
+    return {
+      color: 'primary',
+      response: ''
+    }
+  },
+  methods: {
+    async makeRequest (ev, done) {
+      this.response = ''
+
+      let response = 'request error'
+      let color = 'negative'
+      let req = await fetch('/api/test')
+
+      if (req.ok) {
+        let {data} = await req.json()
+        response = data
+        color = 'positive'
+      }
+
+      setTimeout(() => {
+        this.response = response
+        this.color = color
+        done()
+      }, 700)
+    }
+  },
+  components: {
+    QBtn
+  }
 }
 </script>
 

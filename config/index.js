@@ -19,7 +19,7 @@ module.exports = {
 
   build: {
     env: require('./prod.env'),
-    publicPath: '',
+    publicPath: '/',
     productionSourceMap: false,
 
     // Remove unused CSS
@@ -46,10 +46,17 @@ module.exports = {
     // https://github.com/chimurai/http-proxy-middleware
     proxyTable: {
       '/api': {
-        target: 'http://localhost:8080',
+        target: 'http://localhost:8000/api',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
+        }
+      },
+      '/storage': {
+        target: 'http://localhost:8000/storage',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/storage': ''
         }
       }
     }

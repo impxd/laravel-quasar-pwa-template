@@ -13,6 +13,7 @@ require(`quasar/dist/quasar.${__THEME}.css`)
 import Vue from 'vue'
 import Quasar from 'quasar'
 import router from './router'
+import App from './App'
 
 Vue.config.productionTip = false
 Vue.use(Quasar) // Install Quasar Framework
@@ -29,5 +30,5 @@ if (__THEME === 'mat') {
 new Vue({
   el: '#q-app',
   router,
-  render: h => h(require('./App'))
+  render: h => h(App)
 })

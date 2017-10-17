@@ -7,6 +7,8 @@ var
   cssUtils = require('./css-utils'),
   baseWebpackConfig = require('./webpack.base.conf'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
+  WriteFilePlugin = require('write-file-webpack-plugin'),
+  CopyWebpackPlugin = require('copy-webpack-plugin'),
   FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 // add hot-reload related code to entry chunks
@@ -28,8 +30,19 @@ module.exports = merge(baseWebpackConfig, {
     })
   },
   plugins: [
+    new WriteFilePlugin({
+      test: /(\.php|\.htaccess)$/
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
+    // copy custom static assets
+    new CopyWebpackPlugin([
+      // laravel files in public/
+      {
+        from: path.resolve(__dirname, '../src/larafiles'),
+        to: ''
+      }
+    ]),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/index.html',

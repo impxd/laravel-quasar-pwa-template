@@ -1,6 +1,5 @@
 /node_modules
-/public/hot
-/public/storage
+/public
 /storage/*.key
 /vendor
 /.idea
@@ -14,7 +13,7 @@ composer.lock
 
 .DS_Store
 .thumbs.db
-/dist/*
+/dist
 cordova/platforms
 cordova/plugins
 package-lock.json

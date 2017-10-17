@@ -96,7 +96,10 @@ module.exports = merge(baseWebpackConfig, {
     new SWPrecacheWebpackPlugin({
       cacheId: 'my-quasar-app',
       filename: 'service-worker.js',
-      staticFileGlobs: ['dist/**/*.{js,html,css,woff,ttf,eof,woff2,json,svg,gif,jpg,png,mp3}'],
+      directoryIndex: '/',
+      navigateFallback: '/',
+      dynamicUrlToDependencies: {'/': [path.resolve(__dirname, '../dist/app.html')]},
+      staticFileGlobsIgnorePatterns: [/(app\.html|\.htaccess|\.php|web\.config|robots\.txt|\.ini)$/],
       minify: true,
       stripPrefix: 'dist/'
     })

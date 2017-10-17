@@ -7,6 +7,7 @@ var
   merge = require('webpack-merge'),
   projectRoot = path.resolve(__dirname, '../'),
   ProgressBarPlugin = require('progress-bar-webpack-plugin'),
+  SymlinkWebpackPlugin = require('symlink-webpack-plugin'),
   useCssSourceMap =
     (env.dev && config.dev.cssSourceMap) ||
     (env.prod && config.build.productionSourceMap)
@@ -103,6 +104,10 @@ module.exports = {
         context: path.resolve(__dirname, '../src'),
         postcss: cssUtils.postcss
       }
+    }),
+    // create the storage symbolic link
+    new SymlinkWebpackPlugin({
+      origin: '../storage/app/public', symlink: 'storage'
     }),
     new ProgressBarPlugin({
       format: config.progressFormat
