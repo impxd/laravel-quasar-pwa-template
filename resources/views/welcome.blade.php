@@ -1,1 +1,1 @@
-{{ require_once('app.html') }}
+../../public/app.html
