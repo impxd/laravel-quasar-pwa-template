@@ -3,19 +3,26 @@
 /storage/*.key
 /vendor
 /.idea
+/.vscode
 /.vagrant
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
 .env
-composer.lock
 
+.quasar
 .DS_Store
 .thumbs.db
 /dist
-cordova/platforms
-cordova/plugins
-package-lock.json
+/src-cordova/platforms
+/src-cordova/plugins
+/src-cordova/www
+yarn-debug.log*
 
-subl-project.sublime-workspace
+# Editor directories and files
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sublime-workspace

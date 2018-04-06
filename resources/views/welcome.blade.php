@@ -1,1 +1,3 @@
-../../public/app.html
+@php
+  @include_once 'index.html';
+@endphp
