@@ -1,4 +1,4 @@
-# Laravel 5.5 + Quasar Framework (PWA)
+# Laravel 5.6 + Quasar Framework 0.15 (PWA)
 
 ## Build Setup
 > rename or copy  .env.example to .env
@@ -6,6 +6,9 @@
 ``` bash
 # install php dependencies
 $ composer install
+
+# Node.js >= 8.9.0 is required.
+$ npm install -g quasar-cli
 
 # install node dependencies
 $ npm install
@@ -16,17 +19,17 @@ $ artisan key:generate
 # set privileges to node_modules folder (optional)
 #$ chmod -R u+x node_modules/
 
-# serve the backend (in another console tab)
+# first serve the backend (in another console tab, don't use the artisan's serve url in this mode)
 $ artisan serve
 
-# build for development mode (don't use the artisan serve url in this mode)
-$ npm run dev
+# then build for development mode
+$ quasar dev -m pwa
 
 # OR
 
-# build for production (it'll generate the necessary laravel files, static
-# resources and the service-worker; now you can access through artisan serve)
-$ npm run build
+# build for production (it'll generate the necessary files, static
+# resources and the service-worker)
+$ quasar build -m pwa
 ```
 
 ## Laravel License
