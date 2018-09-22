@@ -14,4 +14,4 @@
 // Redirect all to the front-end router
 Route::get('/{pattern?}', function() {
     return view('welcome');
-})->where('pattern', '[\/\w\.-]*');
+})->where('pattern', '.*');

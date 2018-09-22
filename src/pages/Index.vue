@@ -45,7 +45,7 @@ export default {
 
       try {
         response = ''
-        let req = await fetch('/api/test')
+        let req = await fetch(process.env.api + '/test')
 
         if (!req.ok) throw new Error('error request')
 

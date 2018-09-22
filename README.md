@@ -1,7 +1,8 @@
-# Laravel 5.6 + Quasar Framework 0.15 (PWA)
+# Laravel 5.7 + Quasar Framework 0.17 (PWA)
 
 ## Build Setup
 > rename or copy  .env.example to .env
+$ cp .env.example .env
 
 ``` bash
 # install php dependencies
@@ -19,7 +20,7 @@ $ artisan key:generate
 # set privileges to node_modules folder (optional)
 #$ chmod -R u+x node_modules/
 
-# first serve the backend (in another console tab, don't use the artisan's serve url in this mode)
+# first start the back-end (don't use the artisan's serve url in this mode)
 $ artisan serve
 
 # then build for development mode
@@ -27,10 +28,11 @@ $ quasar dev -m pwa
 
 # OR
 
-# build for production (it'll generate the necessary files, static
-# resources and the service-worker)
+# build for production (it'll generate and copy the necessary files)
 $ quasar build -m pwa
 ```
+
+Check out `quasar.conf.js`
 
 ## Laravel License
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
