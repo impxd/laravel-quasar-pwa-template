@@ -1,5 +1,5 @@
 {
-  "name": "lara_quasar",
+  "name": "laravel-quasar-pwa-template",
   "version": "1.0.0",
   "description": "A Quasar Framework app",
   "productName": "Quasar App",
@@ -10,23 +10,30 @@
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.18.0",
+    "vue-i18n": "^7.3.3"
+  },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
+    "copy-webpack-plugin": "^4.5.2",
     "eslint": "^4.18.2",
     "eslint-config-standard": "^11.0.0",
-    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "eslint-plugin-vue": "^4.3.0",
-    "quasar-cli": "^0.15.14"
+    "quasar-cli": "^0.17.19",
+    "strip-ansi": "=3.0.1",
+    "symlink-webpack-plugin": "0.0.4"
   },
   "engines": {
     "node": ">= 8.9.0",
-    "npm": ">= 5.6.0"
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
   },
   "browserslist": [
     "> 1%",

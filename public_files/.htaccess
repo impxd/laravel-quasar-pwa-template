@@ -19,13 +19,3 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
-
-<IfModule mod_headers.c>
-Header set Connection keep-alive
-
-    # Cache-control headers for the service-worker
-    <filesMatch "service-worker\.js$">
-        Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
-    </filesMatch>
-</IfModule>
-

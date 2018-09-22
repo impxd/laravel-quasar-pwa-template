@@ -1,34 +1,36 @@
 // Configuration for your app
+const
+  path = require('path'),
+  SymlinkWebpackPlugin = require('symlink-webpack-plugin'),
+  CopyWebpackPlugin = require('copy-webpack-plugin')
+
 
 module.exports = function (ctx) {
   return {
     // app plugins (/src/plugins)
     plugins: [
+      'i18n',
+      'axios'
     ],
     css: [
       'app.styl'
     ],
     extras: [
       ctx.theme.mat ? 'roboto-font' : null,
-      'material-icons'
+      'material-icons', // optional, you are not bound to it
       // 'ionicons',
       // 'mdi',
       // 'fontawesome'
     ],
     supportIE: false,
-    vendor: {
-      add: [],
-      remove: []
-    },
     build: {
-      htmlFilename: 'index.html',
       distDir: 'public',
       scopeHoisting: true,
       vueRouterMode: 'history',
+      // vueCompiler: true,
       // gzip: true,
       // analyze: true,
       // extractCSS: false,
-      // useNotifier: false,
       extendWebpack (cfg) {
         cfg.module.rules.push({
           enforce: 'pre',
@@ -36,16 +38,36 @@ module.exports = function (ctx) {
           loader: 'eslint-loader',
           exclude: /(node_modules|quasar)/
         })
-      }
+
+        if (ctx.prod) {
+          cfg.plugins.push(new CopyWebpackPlugin([{
+            from: path.resolve(__dirname, 'public_files'),
+            to: '',
+          }]))
+
+          cfg.plugins.push(new SymlinkWebpackPlugin({
+            origin: '../storage/app/public',
+            symlink: 'storage'
+          }))
+        }
+
+      },
+      env: {
+        api: JSON.stringify(
+          ctx.dev
+            ? '/api'
+            : 'http://some.endpoint/api' // production end-point
+        ),
+      },
     },
     devServer: {
       // https: true,
       // port: 8080,
       open: true, // opens browser window automatically
-      proxy: {
-        '/api': 'http://localhost:8000',
-        '/storage': 'http://localhost:8000',
-      },
+      proxy: [{
+        context: ['/api', '/storage'],
+        target: 'http://localhost:8000', // laravel end-point
+      }],
       historyApiFallback: true
     },
     // framework: 'all' --- includes everything; for dev only!
@@ -73,18 +95,21 @@ module.exports = function (ctx) {
       plugins: [
         'Notify'
       ]
+      // iconSet: ctx.theme.mat ? 'material-icons' : 'ionicons'
+      // i18n: 'de' // Quasar language
     },
     // animations: 'all' --- includes all animations
-    animations: [
-    ],
+    animations: [],
+    ssr: {
+      pwa: false
+    },
     pwa: {
-      cacheExt: 'js,html,css,ttf,eot,otf,woff,woff2,json,svg,gif,jpg,jpeg,png,wav,ogg,webm,flac,aac,mp4,mp3',
-      navigateFallback: '/index.html',
+      // workboxPluginMode: 'InjectManifest',
+      // workboxOptions: {},
       manifest: {
-        name: 'Quasar App',
-        short_name: 'Quasar-PWA',
-        start_url: "/",
-        description: 'Best PWA App in town!',
+        // name: 'Quasar App',
+        // short_name: 'Quasar-PWA',
+        // description: 'Best PWA App in town!',
         display: 'standalone',
         orientation: 'portrait',
         background_color: '#ffffff',
@@ -122,10 +147,13 @@ module.exports = function (ctx) {
       // id: 'org.cordova.quasar.app'
     },
     electron: {
+      // bundler: 'builder', // or 'packager'
       extendWebpack (cfg) {
-        // do something with cfg
+        // do something with Electron process Webpack cfg
       },
       packager: {
+        // https://github.com/electron-userland/electron-packager/blob/master/docs/api.md#options
+
         // OS X / Mac App Store
         // appBundleId: '',
         // appCategoryType: '',
@@ -134,10 +162,12 @@ module.exports = function (ctx) {
 
         // Window only
         // win32metadata: { ... }
-      }
-    },
+      },
+      builder: {
+        // https://www.electron.build/configuration/configuration
 
-    // leave this here for Quasar CLI
-    starterKit: '1.0.2'
+        // appId: 'quasar-app'
+      }
+    }
   }
 }
