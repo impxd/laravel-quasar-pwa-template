@@ -2,6 +2,7 @@
 
 ## Build Setup
 > rename or copy  .env.example to .env
+
 $ cp .env.example .env
 
 ``` bash
@@ -33,6 +34,7 @@ $ quasar build -m pwa
 ```
 
 Check out `quasar.conf.js`
+
 
 ## Laravel License
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
