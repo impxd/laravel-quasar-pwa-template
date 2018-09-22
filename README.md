@@ -3,7 +3,9 @@
 ## Build Setup
 > rename or copy  .env.example to .env
 
+``` bash
 $ cp .env.example .env
+```
 
 ``` bash
 # install php dependencies
