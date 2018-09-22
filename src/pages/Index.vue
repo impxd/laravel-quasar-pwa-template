@@ -2,7 +2,7 @@
   <q-page class="flex flex-center">
     <div class="column justify-center items-center">
       <div>
-        <h5>Laravel 5.6 (as API backend) + Quasar PWA (Vuejs)</h5>
+        <h5>Laravel 5.7 (as API backend) + Quasar PWA (Vuejs)</h5>
       </div>
       <div>
         <img alt="Quasar logo" src="~assets/quasar-logo-full.svg">
